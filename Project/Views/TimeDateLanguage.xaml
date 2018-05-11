@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Project.Views.TimeDateLanguage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Project.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:Project.Views"
+             mc:Ignorable="d" 
+             DataContext="{Binding TimeDateLanguge, Source={StaticResource Locator}}"
+             d:DesignHeight="50" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <materialDesign:PackIcon Kind="ChevronDown" x:Key="MyPopupBoxToggleContent" x:Shared="False" Margin="4 0 4 0" Width="50" Height="50"
+                  Foreground="White" />
+            <Style TargetType="{x:Type materialDesign:PopupBox}" x:Key="MyPopupBox" BasedOn="{StaticResource MaterialDesignPopupBox}">
+                <Setter Property="ToggleContent" Value="{StaticResource MyPopupBoxToggleContent}" />
+            </Style>
+            <DataTemplate x:Key="IsHidden">
+                <Grid>
+
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="IsShown">
+                <Image Source="/Views/Image/battery.png" Height="40" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel Background="#212121" VerticalAlignment="Stretch" Height="50" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="30" VerticalAlignment="Center" Margin="54 0 0 0" Text="{Binding TimeNow, StringFormat='dd-MM-yyyy'}" Foreground="White"/>
+            <TextBlock FontSize="30" Grid.Column="1" VerticalAlignment="Center"  
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       Text="{Binding TimeNow, StringFormat='hh:mm tt'}"/>
+        </Grid>
+    </Grid>
+</UserControl>

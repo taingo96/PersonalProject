@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Project.Views.MainForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Project.Views"
+             xmlns:viewmodel="clr-namespace:Project.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1230">
+    <UserControl.Resources>
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Image Source="/Views/Image/Frame.png" Stretch="Fill">
+        </Image>
+        <Grid Margin="150,120,150,140">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Style="{DynamicResource NoChromeButton}"
+                    Command="{x:Static viewmodel:GlobalCommands.ShowReminder  }"
+             Background="#81D4FA"                 
+                    Grid.Row="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="0" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/remindericon2.jpg" Stretch="None" Width="219"/>
+            </Button>
+            <Button Style="{DynamicResource NoChromeButton}" 
+                    Command="{x:Static viewmodel:GlobalCommands.ShowSpellingGame  }"
+             Background="#81D4FA"                 
+                    Grid.Row="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="1" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/spellingicon.jpg" Stretch="Uniform" Width="219"/>
+            </Button>
+            <Button Style="{DynamicResource NoChromeButton}" 
+                    Command="{x:Static viewmodel:GlobalCommands.ShowTellerStory  }"
+             Background="#81D4FA"                 
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="1" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/storytellericon.jpg" Stretch="Uniform" Width="219"/>
+            </Button>
+            <Button Style="{DynamicResource NoChromeButton}"
+                    Command="{x:Static viewmodel:GlobalCommands.ShowLocazationInfor  }"
+             Background="#81D4FA"                 
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="0" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/localicon.png" Stretch="Uniform" Width="219"/>
+            </Button>
+            <Button Style="{DynamicResource NoChromeButton}" 
+                    Command="{x:Static viewmodel:GlobalCommands.ShowDiscovery  }"
+             Background="#81D4FA"                 
+                    Grid.Row="2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="0" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/discovericon2.jpg" Stretch="Uniform" Width="219"/>
+            </Button>
+            <Button Style="{DynamicResource NoChromeButton}" 
+                    Command="{x:Static viewmodel:GlobalCommands.ShowMediaPlay  }"
+             Background="#81D4FA"                 
+                    Grid.Row="2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Grid.Column="1" Height="133" Margin="10,10,10,0" Width="445">
+                <Image Source="/Views/Image/mediaicon.png" Stretch="Uniform" Width="219"/>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>
